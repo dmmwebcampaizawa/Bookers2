@@ -14,8 +14,33 @@
     <header>
     <% if user_signed_in? %>
       <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <%= link_to 'マイページ（Home）', user_path(current_user.id) %>
       </li>
+      <li>
+        <%= link_to 'ユーザー一覧（User）', users_path %>
+      </li>
+      <li>
+      <%= link_to 'books一覧（Books）', books_path %>
+      </li>
+      <li>
+      <%= link_to 'books詳細', book_path(current_user.id) %>
+      </li>
+      <li>
+      <%= link_to 'books編集', edit_book_path(current_user.id) %>
+      </li>
+      <li>
+        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+      </li>
+      <li>
+        <%= link_to 'ユーザー情報変更', edit_user_path(current_user.id) %>
+      </li>
+      <li>
+        <%= link_to 'ユーザー詳細', user_path(current_user.id) %>
+      </li>
+      <!--<li>-->
+      <!--   link_to '投稿フォーム', new_post_image_path %>-->
+      <!--</li>-->
+
     <% else %>
       <li>
         <%= link_to "新規登録", new_user_registration_path %>

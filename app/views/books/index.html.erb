@@ -1,0 +1,22 @@
+<h1>Book一覧</h1>
+
+<h2>一覧</h2>
+
+<% @books.each do |book| %>
+
+  <p>Title：<%= @book.title %></p>
+  <p>Opinion：<%= @book.opinion %></p>
+
+<% end %>
+
+
+<h2>投稿機能</h2>
+<%= form_with model: Book.new do |f| %>
+
+<p>Title</p>
+<p><%= f.text_field :title %></p>
+<p>Opinion</p>
+<p><%= f.text_area :opinion %></p>
+
+  <p><%= f.submit '投稿' %></p>
+<% end %>
