@@ -1,6 +1,24 @@
 <h1>Book詳細</h1>
 
-<div>
-  <p>Title：<%= @book.title %></p>
-  <p>Opinion：<%= @book.opinion %></p>
+
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-4">
+    <!--部分テンプレート読み込み-->
+    <%= render 'list', books: @books %>
+    </div>
+
+    <div class="col-md-8">
+        <h2>一覧</h2>
+        <p>Title：<%= @book.title %></p>
+        <p>Opinion：<%= @book.opinion %></p>
+
+          <% if @book.user == current_user %>
+            <%= link_to "編集", edit_book_path(@book) %>
+            <%= link_to "削除", book_path(@book), method: :delete %>
+          <% end %>
+    </div>
+  </div>
 </div>
+
+

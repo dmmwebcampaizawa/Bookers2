@@ -1,1 +1,12 @@
 <h1>Book編集</h1>
+<%= form_with model: @book, url: update_book_path(@book.id), method: :patch do |f| %>
+
+  <p>title</p>
+  <%= f.text_field :title %>
+  
+  <p>Opinion</p>
+  <%= f.text_area :opinion %>
+  
+  <%= f.submit '保存' %>
+
+<% end %>
