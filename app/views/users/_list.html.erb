@@ -1,19 +1,20 @@
 <h2>User info</h2>
- 
+
   <table class='table'>
-    <tr><%= image_tag @user.get_profile_image(100,100) %></tr>
+    <tr><%= image_tag user.get_profile_image(100,100) %></tr>
     <tr>
       <th>name</th>
-      <th><%= @user.name %></th>
+      <th><%= user.name %></th>
     </tr>
     <tr>
       <th>introduction</th>
-      <th><%= @user.introduction %></th>
+      <th><%= user.introduction %></th>
     </tr>
   </table>
-  
+
   <div class='row'>
-    <%= link_to  edit_user_path(current_user.id), class: 'btn btn-outline-secondary btn-block edit_user_19892' do %>
+      <%= link_to edit_user_path(@user.id), class: 'btn btn-outline-secondary btn-block edit_user_19892' do %>
       <i class="fas fa-user-cog"></i>
-    <% end %>
+      <% end %>
+    
   </div>
