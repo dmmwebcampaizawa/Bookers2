@@ -1,6 +1,4 @@
-<main>
-<p id="notice"><%= notice %></p>
-  <div class="container px-5 px-sm-0">
+<div class="container px-5 px-sm-0">
     <div class="row">
       <div class="col-md-3">
       <!--部分テンプレート読み込み-->
@@ -18,6 +16,24 @@
               <br><%= link_to @user.name, user_path(@user.id) %></th>
               <th><%= link_to @book.title,book_path(@book.id) %></th>
               <th><%= @book.body %></th>
+              <!--星レビュー機能-->
+              <th>
+            　　<div id="star-rate<%= @book.id%>">
+            　</th>
+                <script>
+                  $('#star-rate<%= @book.id %>').empty();
+                  $('#star-rate<%= @book.id%>').raty({
+                  size      : 36,
+                  starOff   : '<%= asset_path('star-off.png') %>',
+                  starOn    : '<%= asset_path('star-on.png') %>',
+                  starHalf  : '<%= asset_path('star-half.png') %>',
+                  half      : true,
+                  readOnly: true,
+                  score: <%= @book.star %>,
+                  });
+                </script>
+                </div>
+              <!--編集・削除ボタン-->
               <% if @book.user == current_user %>
               <th><%= link_to "Edit", edit_book_path(@book), class: 'btn btn-sm btn-success edit_book_15419' %></th>
               <th><%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に削しますか？", class: 'btn btn-sm btn-danger destroy_book_15419' %></th>

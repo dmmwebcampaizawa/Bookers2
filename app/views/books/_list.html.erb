@@ -1,12 +1,33 @@
-
-
 <h2 class="mt-3">New book</h2>
-<%= form_with model: Book.new do |f| %>
-<p>Title</p>
-<p><%= f.text_field :title %></p>
-<p>Opinion</p>
-<p><%= f.text_area :body %></p>
+  <%= form_with model: Book.new do |f| %>
+    
+    <div class="form-group">
+    <p>Title</p>
+    <p><%= f.text_field :title %></p>
+    </div>
+    <div class="form-group">
+    <p>Opinion</p>
+    <p><%= f.text_area :body %></p>
+    </div>
 
-<p><%= f.submit 'Create Book', class: 'btn btn-success' %></p>
+    <!--星レビュー機能-->
+    <div class="form-group" id="star">
+      <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %>
+      <%= f.hidden_field :star, id: :review_star %>
+　　</div>
+    <script>
+　　　$('#star').empty();
+      $('#star').raty({
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+ 　 　　scoreName: 'book[star]',　
+      half: true,
+      });
+    </script>
 
-<% end %>
+    
+    <!--投稿ボタン-->
+    <p><%= f.submit 'Create Book', class: 'btn btn-success' %></p>
+  <% end %>

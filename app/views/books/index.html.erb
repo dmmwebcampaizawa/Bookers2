@@ -1,5 +1,3 @@
-<main>
-<p id="notice"></p>
 <div class="container px-5 px-sm-0">
   <% if @book.errors.any? %>
     <h3><%= @book.errors.count %> errors prohibited this obj from being saved:</h3>
@@ -27,7 +25,8 @@
               <th></th>
               <th>Title</th>
               <th>Opinion</th>
-              <th colspan="3"></th>
+              <th></th>
+              <th colspan="4"></th>
             </tr>
         </thead>
         <tbody>
@@ -40,9 +39,28 @@
             <td><%= link_to book_path(book.id) do %>
                 <%= book.title %>
                 <% end %></td>
+                
             <td><%= book.body %></td>
+            
+            <!--星レビュー機能-->
+            <td>
+              <div id="star-rate<%= book.id%>">
+            </td>
+              <script>
+              $('#star-rate<%= book.id %>').empty();
+              $('#star-rate<%= book.id%>').raty({
+              size      : 36,
+              starOff   : '<%= asset_path('star-off.png') %>',
+              starOn    : '<%= asset_path('star-on.png') %>',
+              starHalf  : '<%= asset_path('star-half.png') %>',
+              half      : true,
+              readOnly: true,
+              score: <%= book.star %>,
+              });
+              </script>
+              </div> 
           </tr>
-          <% end %>
+        <% end %>
         </tbody>
       </table>
           
