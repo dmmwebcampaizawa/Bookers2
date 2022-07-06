@@ -19,6 +19,12 @@
 
   <div class="col-md-8 offset-md-1">
     <h2>Books</h2>
+    
+    <div class ="mb-3">
+      <%= link_to '新着順', books_path(sort_update: "desc") %>｜
+      <%= link_to '評価の高い順', books_path(star_count: "desc") %>
+    </div>
+    
       <table class='table table-hover table-inverse'>
         <thead>
             <tr>

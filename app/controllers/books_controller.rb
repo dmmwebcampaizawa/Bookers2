@@ -14,7 +14,15 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all
+    if
+      params[:sort_update]
+      @books = Book.all.order(updated_at: :desc) 
+    elsif 
+      params[:star_count]
+      @books = Book.all.order(star: :desc) 
+    else
+      @books = Book.all
+    end
     @book = Book.new
     @user = current_user
   end
