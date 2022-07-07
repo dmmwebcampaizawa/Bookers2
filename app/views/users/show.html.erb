@@ -14,8 +14,9 @@
             <th></th>
             <th>Title</th>
             <th>Opinion</th>
+            <th>Tag</th>
             <th></th>
-            <th colspan="4"></th>
+            <th colspan="5"></th>
           </tr>
         </thead>
 
@@ -27,6 +28,7 @@
               <% end %></td>
             <td><%= link_to book.title, book_path(book.id) %></td>
             <td><%= book.body %></td>
+            <th><%= link_to book.category, search_category_path(keyword: book.category) %></th>
             <!--星レビュー機能-->
             <td>
               <div id="star-rate<%= book.id%>">

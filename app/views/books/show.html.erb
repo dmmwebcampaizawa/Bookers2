@@ -16,6 +16,7 @@
               <br><%= link_to @user.name, user_path(@user.id) %></th>
               <th><%= link_to @book.title,book_path(@book.id) %></th>
               <th><%= @book.body %></th>
+              <th><%= link_to @book.category, search_category_path(keyword: @book.category) %></th>
               <!--星レビュー機能-->
               <th>
             　　<div id="star-rate<%= @book.id%>">

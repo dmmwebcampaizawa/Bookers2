@@ -15,16 +15,21 @@ class BooksController < ApplicationController
 
   def index
     if
+      #並び替え
       params[:sort_update]
       @books = Book.all.order(updated_at: :desc) 
     elsif 
+      #並び替え
       params[:star_count]
-      @books = Book.all.order(star: :desc) 
+      @books = Book.all.order(star: :desc)
     else
+      #並び替え
       @books = Book.all
     end
-    @book = Book.new
-    @user = current_user
+      @book = Book.new
+      @user = current_user
+    
+    
   end
 
   def show
@@ -55,10 +60,17 @@ class BooksController < ApplicationController
     @book.destroy
     redirect_to books_path
   end
+  
+   def search_category
+     @book=Book.new
+     @books = Book.search(params[:keyword])
+     @keyword = params[:keyword]
+   end
+
 
   private
 
   def book_params
-    params.require(:book).permit(:title, :body, :star)
+     params.require(:book).permit(:title, :body, :star, :category)
   end
 end

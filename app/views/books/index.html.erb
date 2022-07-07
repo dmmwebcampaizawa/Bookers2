@@ -31,22 +31,30 @@
               <th></th>
               <th>Title</th>
               <th>Opinion</th>
+              <th>Tag</th>
               <th></th>
-              <th colspan="4"></th>
+              <th colspan="5"></th>
             </tr>
         </thead>
         <tbody>
         <% @books.each do |book| %>
           <tr>
-            <td><%= link_to user_path(book.id) do %>
+            <td>
+              <%= link_to user_path(book.id) do %>
               <%= image_tag book.user.get_profile_image(80,80) %>
-              <% end %></td>
-              
-            <td><%= link_to book_path(book.id) do %>
-                <%= book.title %>
-                <% end %></td>
-                
+              <% end %>
+            </td>
+            <td>
+              <%= link_to book_path(book.id) do %>
+              <%= book.title %>
+              <% end %>
+            </td>
             <td><%= book.body %></td>
+            <td>
+              <%= link_to search_category_path(keyword: book.category) do %>
+              <%= book.category %>
+              <% end %>
+            </td>
             
             <!--星レビュー機能-->
             <td>
